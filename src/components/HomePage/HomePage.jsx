@@ -31,7 +31,6 @@ const calculate = (operation, inputValue, setInputValue, setClassName) => {
 const HomePage = () => {
   const [inputValue, setInputValue] = useState('');
   const [className, setClassName] = useState('');
-  const result = useState('');
 
   return (
     <section>

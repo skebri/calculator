@@ -1,0 +1,97 @@
+@import "partials/variables";
+@import "partials/colors";
+@import "partials/text";
+
+.modal-backdrop {
+  position: absolute;
+  outline: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  transition: all 0.15s ease-out;
+  text-align: center;
+  visibility: hidden;
+
+  .modal-scroll-container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
+
+    &::-webkit-scrollbar { /* WebKit */
+      width: 0;
+      height: 0;
+    }
+  }
+
+  .modal-wrapper {
+    width: 100%;
+    display: inline-block;
+
+    left: 0;
+    right: 0;
+    margin-right: auto;
+    margin-left: auto;
+
+    max-height: 100%;
+    height: 100%;
+
+    padding: 0 15px;
+  }
+
+  &.open {
+    background: rgba(32, 41, 47, 0.9);
+    z-index: 1000;
+    visibility: visible;
+
+    &.calendar-modal .modal {
+      padding-top: 0;
+    }
+
+    .modal {
+      transform: translateY(100px);
+      opacity: 1;
+
+      @include for-sm-screen {
+        transform: translateY(40px);
+      }
+    }
+  }
+
+  .modal {
+    margin-top: 0;
+    top: 0;
+    transform: translateY(0);
+    opacity: 0;
+    transition: all 0.3s ease-out;
+    overflow: hidden;
+    padding-bottom: 20px;
+
+    .modal-header {
+      background: transparent;
+      padding: 20px 0;
+      display: flex;
+      justify-content: flex-end;
+
+      .icon-close {
+        @include hover-transition;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+
+    .modal-body {
+      background: black;
+      display: flex;
+      flex-direction: column;
+      color: white;
+    }
+  }
+}

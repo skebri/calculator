@@ -1,0 +1,42 @@
+<html lang="en">
+  <head>
+    <!-- Facebook sharing meta tags -->
+    <!--
+      <meta property="og:type" content="website"/>
+      <meta property="og:title" content="App title" />
+      <meta property="og:description" content="App description" />
+      <meta property="og:url" content="App url" />
+      <meta property="og:image" content="Sharing image" />
+      <meta property="og:site_name" content="Site name" />
+      <meta property="og:image:width" content="1079" />
+      <meta property="og:image:height" content="566" />
+     -->
+
+    <!-- Twitter sharing meta tags -->
+    <!--
+      <meta name="twitter:title" content="App title" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:description" content="App description" />
+      <meta name="twitter:image" content="absolute url to image">
+    -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="App description">
+
+    <% for (var chunk in htmlWebpackPlugin.files.css) { %>
+      <link rel="preload" href="<%= htmlWebpackPlugin.files.css[chunk] %>" as="style" onload="this.rel='stylesheet'">
+    <% } %>
+
+    <title>App name</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <% for (var chunk in htmlWebpackPlugin.files.js) { %>
+      <link rel="preload" href="<%= htmlWebpackPlugin.files.js[chunk] %>" as="script">
+      <script src="<%= htmlWebpackPlugin.files.js[chunk] %>"></script>
+    <% } %>
+  </body>
+</html>
